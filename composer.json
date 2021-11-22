@@ -1,5 +1,5 @@
 {
-	"name": "glauberportella/cnab-layouts-parser",
+    "name": "bhcosta90/cnab-layouts-parser",
     "description": "Parser de arquivos de configuração CNAB gerados no projeto https://github.com/glauberportella/cnab-layouts",
     "type": "project",
     "license": "MIT",
@@ -7,13 +7,19 @@
         {
             "name": "Glauber Portella",
             "email": "glauberportella@gmail.com"
+        },
+        {
+            "name": "Bruno Costa",
+            "email": "bhcosta90@gmail.com"
         }
     ],
     "require": {
-		"symfony/yaml": "2.7.*"
-	},
+        "symfony/yaml": "2.7.*"
+    },
     "autoload": {
-        "psr-4": { "": "src/" }
+        "psr-4": {
+            "": "src/"
+        }
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "^0.3.2"
