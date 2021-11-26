@@ -23,17 +23,17 @@ use CnabParser\Parser\Layout;
 use CnabParser\Model\Remessa;
 use CnabParser\Output\RemessaFile;
 
-class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
+class ParserItauCobrancaCnab240Test extends \PHPUnit\Framework\TestCase
 {
 	public function testDeveInstanciarLayout()
 	{
-		$layout = new Layout(__DIR__.'/../../../config/itau/cnab240/cobranca.yml');
+		$layout = new Layout('config/itau/cnab240/cobranca.yml');
 		$this->assertInstanceOf('CnabParser\Parser\Layout', $layout);
 	}
 
 	public function testRemessaOk()
 	{
-		$remessaLayout = new Layout(__DIR__.'/../../../config/itau/cnab240/cobranca.yml');
+		$remessaLayout = new Layout('config/itau/cnab240/cobranca.yml');
 		$remessa = new Remessa($remessaLayout);
 		$this->assertInstanceOf('CnabParser\Model\Remessa', $remessa);
 		

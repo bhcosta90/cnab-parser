@@ -23,11 +23,11 @@ use CnabParser\Parser\Layout;
 use CnabParser\Model\Retorno;
 use CnabParser\Input\RetornoFile;
 
-class RetornoParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
+class RetornoParserItauCobrancaCnab240Test extends \PHPUnit\Framework\TestCase
 {
 	public function testRetornoFileInstanceSuccess()
 	{
-		$layout = new Layout(__DIR__.'/../../../config/itau/cnab240/cobranca.yml');
+		$layout = new Layout('config/itau/cnab240/cobranca.yml');
 		$this->assertInstanceOf('CnabParser\Parser\Layout', $layout);
 
 		$retornoFile = new RetornoFile($layout, __DIR__.'/../../data/cobranca-itau-cnab240.ret');
@@ -36,7 +36,7 @@ class RetornoParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 
 	public function testRetornoGenerateModelSuccess()
 	{
-		$layout = new Layout(__DIR__.'/../../../config/itau/cnab240/cobranca.yml');
+		$layout = new Layout('config/itau/cnab240/cobranca.yml');
 		$retornoFile = new RetornoFile($layout, __DIR__.'/../../data/cobranca-itau-cnab240.ret');
 
 		$this->assertEquals(1, $retornoFile->getTotalLotes());
@@ -65,10 +65,10 @@ class RetornoParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('BANCO ITAU S.A.', $retorno->header_arquivo->nome_banco);
 		$this->assertEquals('', $retorno->header_arquivo->brancos_05);
 		$this->assertEquals(2, $retorno->header_arquivo->codigo_arquivo);
-		$this->assertEquals('05072012', $retorno->header_arquivo->data_geracao);
+		$this->assertEquals('10072012', $retorno->header_arquivo->data_geracao);
 		$this->assertEquals('163917', $retorno->header_arquivo->hora_geracao);
 		$this->assertEquals(4, $retorno->header_arquivo->numero_sequencial_arquivo_retorno);
-		$this->assertEquals('040', $retorno->header_arquivo->versao_layout_arquivo);
+		$this->assertEquals('40', $retorno->header_arquivo->versao_layout_arquivo);
 		$this->assertEquals(0, $retorno->header_arquivo->zeros_03);
 		$this->assertEquals('', $retorno->header_arquivo->brancos_06);
 		$this->assertEquals(0, $retorno->header_arquivo->zeros_04);

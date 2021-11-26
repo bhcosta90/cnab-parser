@@ -24,17 +24,17 @@ use CnabParser\Model\Remessa;
 use CnabParser\Model\Lote;
 use CnabParser\Output\RemessaFile;
 
-class ParserFebrabanPagamentoTest extends \PHPUnit_Framework_TestCase
+class ParserFebrabanPagamentoTest extends \PHPUnit\Framework\TestCase
 {
 	public function testDeveInstanciarLayout()
 	{
-		$layout = new Layout(__DIR__.'/../../../config/febraban/cnab240/pagamentos.yml');
+		$layout = new Layout('config/febraban/cnab240/pagamentos.yml');
 		$this->assertInstanceOf('CnabParser\Parser\Layout', $layout);
 	}
 
 	public function testRemessaPagamentosOk()
 	{
-		$remessaLayout = new Layout(__DIR__.'/../../../config/febraban/cnab240/pagamentos.yml');
+		$remessaLayout = new Layout('config/febraban/cnab240/pagamentos.yml');
 		$remessa = new Remessa($remessaLayout);
 		$this->assertInstanceOf('CnabParser\Model\Remessa', $remessa);
 		

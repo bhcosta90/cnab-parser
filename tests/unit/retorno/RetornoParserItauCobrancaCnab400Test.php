@@ -23,11 +23,11 @@ use CnabParser\Parser\Layout;
 use CnabParser\Model\Retorno;
 use CnabParser\Input\RetornoFile;
 
-class RetornoParserItauCobrancaCnab400Test extends \PHPUnit_Framework_TestCase
+class RetornoParserItauCobrancaCnab400Test extends \PHPUnit\Framework\TestCase
 {
 	public function testRetornoFileInstanceSuccess()
 	{
-		$layout = new Layout(__DIR__.'/../../../config/itau/cnab400/cobranca.yml');
+		$layout = new Layout('config/itau/cnab400/cobranca.yml');
 		$this->assertInstanceOf('CnabParser\Parser\Layout', $layout);
 
 		$retornoFile = new RetornoFile($layout, __DIR__.'/../../data/cobranca-itau-cnab400.ret');
@@ -36,7 +36,7 @@ class RetornoParserItauCobrancaCnab400Test extends \PHPUnit_Framework_TestCase
 
 	public function testRetornoGenerateModelSuccess()
 	{
-		$layout = new Layout(__DIR__.'/../../../config/itau/cnab400/cobranca.yml');
+		$layout = new Layout('config/itau/cnab400/cobranca.yml');
 		$retornoFile = new RetornoFile($layout, __DIR__.'/../../data/cobranca-itau-cnab400.ret');
 
 		$this->assertEquals(1, $retornoFile->getTotalLotes());

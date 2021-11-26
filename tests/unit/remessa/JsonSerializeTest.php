@@ -24,11 +24,11 @@ use CnabParser\Parser\Layout;
 use CnabParser\Model\Remessa;
 use CnabParser\Model\Lote;
 
-class JsonSerializeTest extends \PHPUnit_Framework_TestCase
+class JsonSerializeTest extends \PHPUnit\Framework\TestCase
 {
 	public function testJsonSerializeRemessaOk()
 	{
-		$remessaLayout = new Layout(__DIR__.'/../../../config/itau/cnab240/cobranca.yml');
+		$remessaLayout = new Layout('config/itau/cnab240/cobranca.yml');
 		$remessa = new Remessa($remessaLayout);
 		$this->assertInstanceOf('CnabParser\Model\Remessa', $remessa);
 		
