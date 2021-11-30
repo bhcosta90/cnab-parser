@@ -36,7 +36,7 @@ class RetornoParserItauCobrancaCnab400Test extends \PHPUnit\Framework\TestCase
 
 	public function testRetornoGenerateModelSuccess()
 	{
-		$layout = new Layout('config/itau/cnab400/cobranca.yml');
+		$layout = new Layout(__DIR__ . '/../../../config/itau/cnab400/cobranca.yml');
 		$retornoFile = new RetornoFile($layout, __DIR__.'/../../data/cobranca-itau-cnab400.ret');
 
 		$this->assertEquals(1, $retornoFile->getTotalLotes());

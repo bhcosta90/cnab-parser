@@ -34,7 +34,7 @@ class Layout
 	public function __construct($arquivo)
 	{
 		$this->arquivo = $arquivo;
-		$this->config = Yaml::parse(file_get_contents(__DIR__ . "/../../../{$arquivo}"));
+		$this->config = Yaml::parse(file_get_contents($arquivo));
 	}
 
 	public function getConfig()
