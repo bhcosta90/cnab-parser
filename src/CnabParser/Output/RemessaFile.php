@@ -38,13 +38,18 @@ class RemessaFile extends IntercambioBancarioRemessaFileAbstract
 
 		// trailer arquivo
 		$trailerArquivo = $this->encodeTrailerArquivo();
-		
 
-		$data = array(
-			$headerArquivo,
-			$lotes,
-			$trailerArquivo,
-		);
+		$data = [];
+
+		if (!empty($headerArquivo)) {
+			$data[] = $headerArquivo;
+		}
+		if (!empty($lotes)) {
+			$data[] = $lotes;
+		}
+		if (!empty($trailerArquivo)) {
+			$data[] = $trailerArquivo;
+		}
 
 		$data = implode(self::CNAB_EOL, $data);
 		$data .= self::CNAB_EOL;
@@ -63,7 +68,10 @@ class RemessaFile extends IntercambioBancarioRemessaFileAbstract
 
 		$layout = $this->model->getLayout();
 		$layoutRemessa = $layout->getRemessaLayout();
-		return $this->encode($layoutRemessa['header_arquivo'], $this->model->header);
+		if (!empty($layoutRemessa['header_arquivo'])) {
+			return $this->encode($layoutRemessa['header_arquivo'], $this->model->header);
+		}
+		return;
 	}
 
 	protected function encodeLotes()
@@ -82,7 +90,7 @@ class RemessaFile extends IntercambioBancarioRemessaFileAbstract
 			if (!empty($lote->trailer))
 				$encoded[] = $this->encodeTrailerLote($lote);
 		}
-		
+
 		return implode(self::CNAB_EOL, $encoded);
 	}
 
@@ -130,6 +138,9 @@ class RemessaFile extends IntercambioBancarioRemessaFileAbstract
 
 		$layout = $this->model->getLayout();
 		$layoutRemessa = $layout->getRemessaLayout();
-		return $this->encode($layoutRemessa['trailer_arquivo'], $this->model->trailer);
+		if (!empty($layoutRemessa['trailer_arquivo'])) {
+			return $this->encode($layoutRemessa['trailer_arquivo'], $this->model->trailer);
+		}
+		return;
 	}
 }
